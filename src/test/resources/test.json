@@ -1,0 +1,93 @@
+[
+  {
+    "id": "a8cfcb76-7f24-4420-a5ba-d46dd77bdffd",
+    "name": "Banana Split",
+    "temp": "frozen",
+    "shelfLife": 20,
+    "decayRate": 0.63
+  },
+  {
+    "id": "58e9b5fe-3fde-4a27-8e98-682e58a4a65d",
+    "name": "McFlury",
+    "temp": "frozen",
+    "shelfLife": 375,
+    "decayRate": 0.4
+  },
+  {
+    "id": "2ec069e3-576f-48eb-869f-74a540ef840c",
+    "name": "Acai Bowl",
+    "temp": "cold",
+    "shelfLife": 249,
+    "decayRate": 0.3
+  },
+  {
+    "id": "690b85f7-8c7d-4337-bd02-04e04454c826",
+    "name": "Yogurt",
+    "temp": "cold",
+    "shelfLife": 263,
+    "decayRate": 0.37
+  },
+  {
+    "id": "972aa5b8-5d83-4d5e-8cf3-8a1a1437b18a",
+    "name": "Chocolate Gelato",
+    "temp": "frozen",
+    "shelfLife": 300,
+    "decayRate": 0.61
+  },
+  {
+    "id": "c18e1242-0856-4203-a98c-7066ead3bd6b",
+    "name": "Cobb Salad",
+    "temp": "cold",
+    "shelfLife": 269,
+    "decayRate": 0.19
+  },
+  {
+    "id": "66a2611c-9a93-4ccd-bb85-98f423247bf9",
+    "name": "Cottage Cheese",
+    "temp": "cold",
+    "shelfLife": 251,
+    "decayRate": 0.22
+  },
+  {
+    "id": "4cc9d503-4e0e-42a3-b200-87c785468df9",
+    "name": "Coke",
+    "temp": "cold",
+    "shelfLife": 240,
+    "decayRate": 0.25
+  },
+  {
+    "id": "0a6537d7-9568-400e-9857-7aceb4e7347c",
+    "name": "Snow Cone",
+    "temp": "frozen",
+    "shelfLife": 50,
+    "decayRate": 0.86
+  },
+  {
+    "id": "74e0893f-8544-4298-b507-9cf5ab847d83",
+    "name": "Pad See Ew",
+    "temp": "hot",
+    "shelfLife": 210,
+    "decayRate": 0.72
+  },
+  {
+    "id": "7a5ea4ed-e378-4354-8ab3-a09cf563f621",
+    "name": "Chunky Monkey",
+    "temp": "frozen",
+    "shelfLife": 210,
+    "decayRate": 0.54
+  },
+  {
+    "id": "60fbe431-7f7f-46c5-8ecf-6a26ae898685",
+    "name": "Beef Stew",
+    "temp": "hot",
+    "shelfLife": 206,
+    "decayRate": 0.69
+  },
+  {
+    "id": "2e7f4153-92cb-43e2-96f4-d77e2f25422b",
+    "name": "Cheese",
+    "temp": "cold",
+    "shelfLife": 255,
+    "decayRate": 0.2
+  }
+]

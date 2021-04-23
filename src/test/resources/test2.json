@@ -1,0 +1,233 @@
+[
+  {
+    "id": "d4ead98f-a158-429c-9c0d-28ab0fa830a6",
+    "name": "Spinach Omelet",
+    "temp": "hot",
+    "shelfLife": 230,
+    "decayRate": 0.63
+  },
+  {
+    "id": "e868e485-c759-411b-b439-ca7086326bf6",
+    "name": "Beef Hash",
+    "temp": "hot",
+    "shelfLife": 30,
+    "decayRate": 0.74
+  },
+  {
+    "id": "2bfc7ca9-d8ea-4625-9a03-6aa4b5fb635e",
+    "name": "Pork Chop",
+    "temp": "hot",
+    "shelfLife": 200,
+    "decayRate": 0.7
+  },
+  {
+    "id": "1a4d0e6d-e50e-4ec0-ad5d-0f33e6a724e6",
+    "name": "Kale Salad",
+    "temp": "cold",
+    "shelfLife": 250,
+    "decayRate": 0.25
+  },
+  {
+    "id": "a9f8f42f-7a58-4629-8b66-1acbf362f3b8",
+    "name": "Fresh Fruit",
+    "temp": "cold",
+    "shelfLife": 252,
+    "decayRate": 0.29
+  },
+  {
+    "id": "6d2c9eb3-6ff8-408a-a60d-e60eaa467dae",
+    "name": "Cranberry Salad",
+    "temp": "cold",
+    "shelfLife": 245,
+    "decayRate": 0.21
+  },
+  {
+    "id": "916ddba3-9c25-4065-8a90-ecf5c40c8394",
+    "name": "Fudge Ice Cream Cake",
+    "temp": "frozen",
+    "shelfLife": 415,
+    "decayRate": 0.49
+  },
+  {
+    "id": "23f5cb3a-fa51-49ad-9e29-83e98d6e7d6f",
+    "name": "Mint Chocolate Ice Cream",
+    "temp": "frozen",
+    "shelfLife": 290,
+    "decayRate": 0.5
+  },
+  {
+    "id": "c700ab30-d7bd-4e45-aafb-4329876c716c",
+    "name": "Vegan Pizza",
+    "temp": "hot",
+    "shelfLife": 200,
+    "decayRate": 0.7
+  },
+  {
+    "id": "cf0932a9-533c-4603-bb1e-512c6e697b92",
+    "name": "Orange Chicken",
+    "temp": "hot",
+    "shelfLife": 215,
+    "decayRate": 0.67
+  },
+  {
+    "id": "ed05dafe-d928-4f1a-856d-1dab3868acbd",
+    "name": "MeatLoaf",
+    "temp": "hot",
+    "shelfLife": 213,
+    "decayRate": 0.5
+  },
+  {
+    "id": "53f012e3-da55-4314-b2e6-28e63f0418ad",
+    "name": "Milk",
+    "temp": "cold",
+    "shelfLife": 252,
+    "decayRate": 0.15
+  },
+  {
+    "id": "5dd79771-4536-4eaa-b64c-63ac606f1357",
+    "name": "Pastrami Sandwich",
+    "temp": "hot",
+    "shelfLife": 190,
+    "decayRate": 0.8
+  },
+  {
+    "id": "f84d8263-7aae-4254-85b7-27865ffd76b7",
+    "name": "Arugula",
+    "temp": "cold",
+    "shelfLife": 251,
+    "decayRate": 0.27
+  },
+  {
+    "id": "f7074980-3424-43d4-9166-f495077a273e",
+    "name": "Pickles",
+    "temp": "cold",
+    "shelfLife": 259,
+    "decayRate": 0.29
+  },
+  {
+    "id": "dcafe7ca-f7a7-4262-9b14-ab19729b2055",
+    "name": "Chicken",
+    "temp": "hot",
+    "shelfLife": 201,
+    "decayRate": 0.74
+  },
+  {
+    "id": "614e4f4d-b2f4-4b60-9421-238f61affe20",
+    "name": "Cookie Dough",
+    "temp": "frozen",
+    "shelfLife": 600,
+    "decayRate": 0.15
+  },
+  {
+    "id": "d2d2d948-f019-4806-bb7e-bb2172bd75d9",
+    "name": "Hamburger",
+    "temp": "hot",
+    "shelfLife": 200,
+    "decayRate": 0.63
+  },
+  {
+    "id": "8275f014-ed83-4554-b0ff-0dbdc24e57ad",
+    "name": "French Fries",
+    "temp": "hot",
+    "shelfLife": 220,
+    "decayRate": 0.67
+  },
+  {
+    "id": "9687809b-8f4b-4a6f-be3f-6e41e4ced3ed",
+    "name": "Ice",
+    "temp": "frozen",
+    "shelfLife": 100,
+    "decayRate": 0.9
+  },
+  {
+    "id": "e537a1b8-1505-49ae-a71e-a3ab80e8b606",
+    "name": "Carne Asada",
+    "temp": "hot",
+    "shelfLife": 222,
+    "decayRate": 0.71
+  },
+  {
+    "id": "3aaccfce-3dbe-4967-a2fb-b6c06b4de61d",
+    "name": "Sherbet",
+    "temp": "frozen",
+    "shelfLife": 175,
+    "decayRate": 0.6
+  },
+  {
+    "id": "1b56ee15-70e7-443e-96cb-0479e9d46381",
+    "name": "Orange Sorbet",
+    "temp": "frozen",
+    "shelfLife": 165,
+    "decayRate": 0.65
+  },
+  {
+    "id": "51c5017b-f812-40ac-8d68-87aab3fbab6a",
+    "name": "Frosty",
+    "temp": "frozen",
+    "shelfLife": 135,
+    "decayRate": 0.52
+  },
+  {
+    "id": "9748651e-c3f8-4c4a-9de9-5360467c86a2",
+    "name": "Fresh Bread",
+    "temp": "hot",
+    "shelfLife": 201,
+    "decayRate": 0.9
+  },
+  {
+    "id": "345cfefe-692e-4866-986e-99a18bedbf24",
+    "name": "Burrito",
+    "temp": "hot",
+    "shelfLife": 202,
+    "decayRate": 0.72
+  },
+  {
+    "id": "87441694-ff97-4d1b-89e3-c4b0b1fd041e",
+    "name": "Icy",
+    "temp": "frozen",
+    "shelfLife": 230,
+    "decayRate": 0.6
+  },
+  {
+    "id": "3713d8af-e6a0-4c11-966c-f26786dc602c",
+    "name": "Push Pop",
+    "temp": "frozen",
+    "shelfLife": 220,
+    "decayRate": 0.5
+  },
+  {
+    "id": "20343dea-8856-4717-9be9-be1b37d4791f",
+    "name": "Pasta",
+    "temp": "hot",
+    "shelfLife": 200,
+    "decayRate": 0.7
+  },
+  {
+    "id": "098604b5-a141-4a5f-a2e3-0b653515cc42",
+    "name": "Chicken Nuggets",
+    "temp": "hot",
+    "shelfLife": 205,
+    "decayRate": 0.71
+  },
+  {
+    "id": "a5697bad-48d4-46fd-b3bc-64ef2485907a",
+    "name": "Ice Cream Sandwich",
+    "temp": "frozen",
+    "shelfLife": 250,
+    "decayRate": 0.5
+  },
+  {
+    "id": "e09f9282-8e05-48a7-8e6e-e23937383735",
+    "name": "Taco",
+    "temp": "hot",
+    "shelfLife": 198,
+    "decayRate": 0.38
+  },
+  {
+    "id": "9df6bbc7-55ee-4f67-8dd1-a9f5ccc56355",
+    "name": "Tomato Soup",
+    "temp": "hot",
+    "shelfLife": 243,
+    "decayRate": 0.71
+  }
+]
