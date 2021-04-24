@@ -1,5 +1,8 @@
 package org.example.Entity;
-
+/**
+ * Entity class that represents an Order
+ * @author BrahianVT
+ * */
 public class Order {
     private String id;
     private String name;

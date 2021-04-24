@@ -10,7 +10,15 @@ import org.example.Utilities.Utilities;
 
 import java.util.List;
 
+/**
+ *  Class where the components interacts between each other to delivery orders
+ * @author BrahianVT
+ * */
 public class Run {
+
+    /**
+     * Method where the components interacts between each other to delivery orders
+     * */
     public void run(){
         ReadJson read = new ReadJson();
         List<Order> list = read.loadJsonFile("orders.json");

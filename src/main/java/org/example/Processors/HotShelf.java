@@ -8,6 +8,11 @@ import org.example.Entity.Order;
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 
+/**
+ *  Class to represents a hot shelf the key part is the FlowableProcessor it
+ *  will either emit orders or send them to the generic shelf.
+ * @author BrahianVT
+ * */
 public class HotShelf {
     private static Logger logger = LogManager.getLogger(HotShelf.class);
     private FlowableProcessor<Order> genericShelf;
@@ -23,11 +28,20 @@ public class HotShelf {
 
     public FlowableProcessor<Order> getHotShelf(){ return hotShelf;  }
 
+    /**
+     *
+     * onDrop discard a element from the hot shelf and delivers to the generic shelf
+     * */
     public  void onDrop(Order o){
         System.out.println("HotShelf full, sent to  generic Shelf");
         genericShelf.onNext(o);
     }
 
+    /**
+     * This method return the subscriber's implementation to subscribe
+     * on the hot shelf and delivery the messages to the courier or discard them
+     * @return Subscriber element
+     * */
     public Subscriber<Order> subscribeHotShelf(){
         return new Subscriber<Order>() {
             Subscription subscription;

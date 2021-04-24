@@ -1,6 +1,5 @@
 package org.example.Processors;
 
-import io.reactivex.rxjava3.core.Flowable;
 import io.reactivex.rxjava3.processors.FlowableProcessor;
 import io.reactivex.rxjava3.processors.PublishProcessor;
 import org.apache.logging.log4j.LogManager;
@@ -9,6 +8,11 @@ import org.example.Entity.Order;
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 
+/**
+ *  Class to represents a Generic shelf the key part is the FlowableProcessor it
+ *  will delivery an order or discard it.
+ * @author BrahianVT
+ * */
 public class GenericShelf {
     private static Logger logger = LogManager.getLogger(ColdShelf.class);
     private FlowableProcessor<Order> genericShelf;
@@ -18,11 +22,19 @@ public class GenericShelf {
     public FlowableProcessor<Order> getGenericShelf(){ return genericShelf;  }
     public void setGenericShelf(FlowableProcessor<Order> gs){ genericShelf = gs; }
 
+    /**
+     * onDrop discard a element from the generic shelf
+     * */
     public void onDrop(Order o){
         o.finishTime();
         System.out.println("dropping from  generic shelf ");
     }
 
+    /**
+     * This method return the subscriber's implementation to subscribe
+     * on the generic shelf and delivery the messages to the courier or discard them
+     * @return Subscriber element
+     * */
     public Subscriber<Order> subscribeGenericShelf(){
         return new Subscriber<Order>() {
             Subscription subscription;

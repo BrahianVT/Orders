@@ -1,6 +1,5 @@
 package org.example.Processors;
 
-import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.observers.DisposableObserver;
 import io.reactivex.rxjava3.processors.FlowableProcessor;
 import io.reactivex.rxjava3.subjects.PublishSubject;
@@ -8,10 +7,13 @@ import io.reactivex.rxjava3.subjects.Subject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.example.Entity.Order;
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
 
 
+/**
+ *  Class to represents a kitchen the key part is the Subject it
+ *  will emit orders and also will send orders.
+ * @author BrahianVT
+ * */
 public  class  Kitchen {
     private static Logger logger = LogManager.getLogger(Kitchen.class);
     Subject<Order> kitchen;
@@ -30,7 +32,11 @@ public  class  Kitchen {
     public boolean frozenTemp(Order temp){ return temp.getTemp().equals("frozen")? true:false; }
 
 
-
+    /**
+     * This method return the DisposableObserver's implementation to subscribe
+     * on the kitchen to filter and emit elements to the hot shelf
+     * @return DisposableObserver element
+     * */
     public DisposableObserver<Order> subscribeHotTemp(){
         DisposableObserver<Order> o =  new DisposableObserver<Order>() {
 
@@ -53,6 +59,12 @@ public  class  Kitchen {
         return o;
     }
 
+    /**
+     * This method return the DisposableObserver's implementation to subscribe
+     * on the kitchen to filter and emit elements to the cold shelf
+     * @return DisposableObserver element
+     * */
+
     public DisposableObserver<Order> subscribeColdTemp(){
         return new DisposableObserver<Order>() {
             @Override
@@ -74,6 +86,11 @@ public  class  Kitchen {
         };
     }
 
+    /**
+     * This method return the DisposableObserver's implementation to subscribe
+     * on the kitchen to filter and emit elements to the frozen shelf
+     * @return DisposableObserver element
+     * */
     public DisposableObserver<Order> subscribeFrozenTemp(){
         return new DisposableObserver<Order>() {
             @Override

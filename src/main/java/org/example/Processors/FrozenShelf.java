@@ -8,6 +8,11 @@ import org.example.Entity.Order;
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 
+/**
+ *  Class to represents a frozen shelf the key part is the FlowableProcessor it
+ *  will either emit orders or send them to the generic shelf.
+ * @author BrahianVT
+ * */
 public class FrozenShelf {
     private static Logger logger = LogManager.getLogger(FrozenShelf.class);
     private FlowableProcessor<Order> genericShelf;
@@ -20,11 +25,20 @@ public class FrozenShelf {
 
     public FlowableProcessor<Order> getFrozenShelf(){ return frozenShelf;  }
 
+    /**
+     *
+     * onDrop discard a element from the frozen shelf and delivers to the generic shelf
+     * */
     public  void onDrop(Order o){
         System.out.println("FrozenShelf full, sent to  generic Shelf");
         genericShelf.onNext(o);
     }
 
+    /**
+     * This method return the subscriber's implementation to subscribe
+     * on the frozen shelf and delivery the messages to the courier or discard them
+     * @return Subscriber element
+     * */
     public Subscriber<Order> subscribeFrozenShelf(){
         return new Subscriber<Order>() {
             Subscription subscription;

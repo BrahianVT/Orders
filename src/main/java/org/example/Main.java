@@ -1,5 +1,10 @@
 package org.example;
 
+
+/**
+ *  Main class
+ * @author BrahianVT
+ * */
 public class Main {
 
     public static void main(String[] args) {
