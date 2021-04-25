@@ -81,3 +81,4 @@ from the generic shelf.
 As each elements receive and emit orders there are 4 couriers.  
 
 Diagram  
+![Alt text](img/architecture.png?raw=true "Solution")
