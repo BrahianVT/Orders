@@ -90,4 +90,21 @@ As each elements receive and emit orders there are 4 couriers.
 * Jackson and Log4j  
 
 ## Execute the project
+The project is a maven project so in the root folder where the **pom.xml** execute:  
+```
+mvn package
+```
+This will create the .jar but is a litle by slow because of the tests.
+
+Go to the folder inside **target**
+
+and in cdm or console execute the following command:   
+java -jar "Orders-1".jar 2 10 15
+
+The first parameter is  ELEMENTS_PER_SECOND  
+The second parameter is  BUFFER_SIZE_SHELF  
+The third parameter is for ELEMENTS_PER_SECOND  
+
+
+
 
