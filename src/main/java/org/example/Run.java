@@ -3,6 +3,8 @@ package org.example;
 import io.reactivex.rxjava3.processors.FlowableProcessor;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import io.reactivex.rxjava3.subjects.Subject;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.example.Entity.Order;
 import org.example.Processors.*;
 import org.example.Utilities.ReadJson;
@@ -15,11 +17,12 @@ import java.util.List;
  * @author BrahianVT
  * */
 public class Run {
-
+    private static Logger logger = LogManager.getLogger(Run.class);
     /**
      * Method where the components interacts between each other to delivery orders
      * */
     public void run(){
+        logger.debug("run ...");
         ReadJson read = new ReadJson();
         List<Order> list = read.loadJsonFile("orders.json");
 
@@ -66,7 +69,7 @@ public class Run {
                 .onBackpressureDrop(s -> createHotShelf.onDrop(s))
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(Schedulers.newThread(), false, Main.BUFFER_SIZE_SHELF)
-                .map(s -> { System.out.println("Waiting for the courier on hot shelf.."); return Utilities.waitingCourier(s);
+                .map(s -> { logger.debug("Waiting for the courier on hot shelf.."); return Utilities.waitingCourier(s);
                 })
                 .filter(s -> Utilities.byShelfLife(s, 1))
                 .subscribe(createHotShelf.subscribeHotShelf());
@@ -76,7 +79,7 @@ public class Run {
                 .onBackpressureDrop(s -> createColdShelf.onDrop(s))
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(Schedulers.newThread(), false, Main.BUFFER_SIZE_SHELF)
-                .map(s -> { System.out.println("Waiting for the courier on cold shelf.."); return Utilities.waitingCourier(s); })
+                .map(s -> { logger.debug("Waiting for the courier on cold shelf.."); return Utilities.waitingCourier(s); })
                 .filter(s -> Utilities.byShelfLife(s, 1))
                 .subscribe(createColdShelf.subscribeColdShelf());
 
@@ -84,7 +87,7 @@ public class Run {
                 .onBackpressureDrop(s -> createFrozenShelf.onDrop(s))
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(Schedulers.newThread(), false, Main.BUFFER_SIZE_SHELF)
-                .map(s -> { System.out.println("Waiting for the courier on frozen shelf.."); return Utilities.waitingCourier(s); })
+                .map(s -> { logger.debug("Waiting for the courier on frozen shelf.."); return Utilities.waitingCourier(s); })
                 .filter(s -> Utilities.byShelfLife(s, 1))
                 .subscribe(createFrozenShelf.subscribeFrozenShelf());
 
@@ -92,14 +95,14 @@ public class Run {
                 .onBackpressureDrop(s -> createGenericShelf.onDrop(s))
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(Schedulers.newThread(), false, Main.BUFFER_SIZE_GENERIC_SHELF)
-                .map(s -> { System.out.println("Waiting for the courier on generic shelf.."); return Utilities.waitingCourier(s); })
+                .map(s -> { logger.debug("Waiting for the courier on generic shelf.."); return Utilities.waitingCourier(s); })
                 .filter(s -> Utilities.byShelfLife(s, 2))
                 .subscribe(createGenericShelf.subscribeGenericShelf());
 
 
 
         for(int i = 1; i <= list.size(); i++){
-            System.out.println("i: " + i + ", "+ list.get(i-1).getId());
+            logger.debug("i: " + i + ", "+ list.get(i-1).getId());
             kitchen.onNext(list.get(i-1));
             if(i % Main.ELEMENTS_PER_SECOND == 0) {
                Utilities.pause(1);

@@ -1,5 +1,7 @@
 package org.example.Utilities;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.example.Entity.Order;
 
 import java.util.Random;
@@ -8,13 +10,14 @@ import java.util.Random;
  * @author BrahianVT
  * **/
 public class Utilities {
-
+    private static Logger logger = LogManager.getLogger(Utilities.class);
     /**
      * Method to generate a random time between 2- 6 seconds
      * @param: Order
      * @return Order
      * */
     public static Order waitingCourier(Order o){
+        logger.debug(" waitingCourier ...");
         Random random = new Random();
         try {
             int range = random.nextInt(6 - 2 + 1) + 2;
@@ -30,6 +33,7 @@ public class Utilities {
      * @param: s are seconds to wait
      * */
     public static void pause(int s){
+        logger.debug(" pause ...");
         try {
             Thread.sleep(s  * 1000);
         } catch (InterruptedException e) {
@@ -47,7 +51,7 @@ public class Utilities {
         float aux = o.calculateRemainingTime(shelfDecayModifier);
         if( aux < 0){
             o.finishTime();
-            System.out.println("Discarting due to shelfLife: " + aux );
+            logger.debug("Discarding due to shelfLife: " + aux );
             return false;
         }
         return true;

@@ -14,7 +14,7 @@ import org.reactivestreams.Subscription;
  * @author BrahianVT
  * */
 public class GenericShelf {
-    private static Logger logger = LogManager.getLogger(ColdShelf.class);
+    private static Logger logger = LogManager.getLogger(GenericShelf.class);
     private FlowableProcessor<Order> genericShelf;
     public GenericShelf(){
         genericShelf = PublishProcessor.<Order>create().toSerialized();
@@ -27,7 +27,7 @@ public class GenericShelf {
      * */
     public void onDrop(Order o){
         o.finishTime();
-        System.out.println("dropping from  generic shelf ");
+        logger.debug("dropping from  generic shelf ");
     }
 
     /**
@@ -47,7 +47,7 @@ public class GenericShelf {
             @Override
             public void onNext(Order order) {
                 order.finishTime();
-                System.out.println(" Order in Generic shelf delivered! ");
+                logger.debug(" Order in Generic shelf delivered! ");
                 subscription.request(1);
             }
 
@@ -58,7 +58,7 @@ public class GenericShelf {
 
             @Override
             public void onComplete() {
-                System.out.println("Delivered all orders G.");
+                logger.debug("Delivered all orders G.");
             }
         };
     }

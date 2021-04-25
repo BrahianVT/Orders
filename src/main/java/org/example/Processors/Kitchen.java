@@ -43,7 +43,7 @@ public  class  Kitchen {
             @Override
             public void onNext(Order order) {
                 order.initTime();
-                System.out.println("Sent to hot shelf " );
+                logger.debug("Sent to hot shelf " );
                 hotShelf.onNext(order);
             }
             @Override
@@ -53,7 +53,7 @@ public  class  Kitchen {
 
             @Override
             public void onComplete() {
-                System.out.println("--- Processed all Hot Temperature Orders");
+                logger.debug("--- Processed all Hot Temperature Orders");
             }
         };
         return o;
@@ -81,7 +81,7 @@ public  class  Kitchen {
 
             @Override
             public void onComplete() {
-                System.out.println("--- Processed all Cold Temperature Orders");
+                logger.debug("--- Processed all Cold Temperature Orders");
             }
         };
     }
@@ -95,7 +95,7 @@ public  class  Kitchen {
         return new DisposableObserver<Order>() {
             @Override
             public void onNext(Order order) {
-                System.out.println("Sent to frozen shelf " );
+                logger.debug("Sent to frozen shelf " );
                 order.initTime();
                 frozenShelf.onNext(order);
             }
@@ -107,7 +107,7 @@ public  class  Kitchen {
 
             @Override
             public void onComplete() {
-                System.out.println("--- Processed all Cold Temperature Orders");
+                logger.debug("--- Processed all Cold Temperature Orders");
             }
         };
     }

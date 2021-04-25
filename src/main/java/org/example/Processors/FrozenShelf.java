@@ -30,7 +30,7 @@ public class FrozenShelf {
      * onDrop discard a element from the frozen shelf and delivers to the generic shelf
      * */
     public  void onDrop(Order o){
-        System.out.println("FrozenShelf full, sent to  generic Shelf");
+        logger.debug("Frozen Shelf full, sent to  generic Shelf");
         genericShelf.onNext(o);
     }
 
@@ -51,7 +51,7 @@ public class FrozenShelf {
             @Override
             public void onNext(Order order) {
                 order.finishTime();
-                System.out.println("Frozen Order delivered! ");
+                logger.debug("Frozen Order delivered! ");
                 subscription.request(1);
             }
 
@@ -62,7 +62,7 @@ public class FrozenShelf {
 
             @Override
             public void onComplete() {
-                System.out.println("Delivered all orders F.");
+                logger.debug("Delivered all orders F.");
             }
         };
     }

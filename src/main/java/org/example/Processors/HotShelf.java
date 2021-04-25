@@ -33,7 +33,7 @@ public class HotShelf {
      * onDrop discard a element from the hot shelf and delivers to the generic shelf
      * */
     public  void onDrop(Order o){
-        System.out.println("HotShelf full, sent to  generic Shelf");
+        logger.debug("HotShelf full, sent to  generic Shelf");
         genericShelf.onNext(o);
     }
 
@@ -54,7 +54,7 @@ public class HotShelf {
             @Override
             public void onNext(Order order) {
                 order.finishTime();
-                System.out.println("Hot Order delivered! ");
+                logger.debug("Hot Order delivered! ");
                 subscription.request(1);
             }
 
@@ -65,7 +65,7 @@ public class HotShelf {
 
             @Override
             public void onComplete() {
-                System.out.println("Delivered all orders H.");
+                logger.debug("Delivered all orders H.");
             }
         };
     }
