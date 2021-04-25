@@ -80,5 +80,14 @@ from the generic shelf.
 
 As each elements receive and emit orders there are 4 couriers.  
 
-Diagram  
+## Diagram  
 ![Alt text](img/architecture.png?raw=true "Solution")
+
+**Technologies**
+* Java 8 and Maven  
+* Intellij Idea, Windows 10 Home  
+* RxJava 3  
+* Jackson and Log4j  
+
+## Execute the project
+

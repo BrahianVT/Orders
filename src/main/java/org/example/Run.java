@@ -65,7 +65,7 @@ public class Run {
         hotShelf
                 .onBackpressureDrop(s -> createHotShelf.onDrop(s))
                 .subscribeOn(Schedulers.newThread())
-                .observeOn(Schedulers.newThread(), false, 10)
+                .observeOn(Schedulers.newThread(), false, Main.BUFFER_SIZE_SHELF)
                 .map(s -> { System.out.println("Waiting for the courier on hot shelf.."); return Utilities.waitingCourier(s);
                 })
                 .filter(s -> Utilities.byShelfLife(s, 1))
@@ -75,7 +75,7 @@ public class Run {
         coldShelf
                 .onBackpressureDrop(s -> createColdShelf.onDrop(s))
                 .subscribeOn(Schedulers.newThread())
-                .observeOn(Schedulers.newThread(), false, 10)
+                .observeOn(Schedulers.newThread(), false, Main.BUFFER_SIZE_SHELF)
                 .map(s -> { System.out.println("Waiting for the courier on cold shelf.."); return Utilities.waitingCourier(s); })
                 .filter(s -> Utilities.byShelfLife(s, 1))
                 .subscribe(createColdShelf.subscribeColdShelf());
@@ -83,7 +83,7 @@ public class Run {
         frozenShelf
                 .onBackpressureDrop(s -> createFrozenShelf.onDrop(s))
                 .subscribeOn(Schedulers.newThread())
-                .observeOn(Schedulers.newThread(), false, 10)
+                .observeOn(Schedulers.newThread(), false, Main.BUFFER_SIZE_SHELF)
                 .map(s -> { System.out.println("Waiting for the courier on frozen shelf.."); return Utilities.waitingCourier(s); })
                 .filter(s -> Utilities.byShelfLife(s, 1))
                 .subscribe(createFrozenShelf.subscribeFrozenShelf());
@@ -91,19 +91,17 @@ public class Run {
         genericShelf
                 .onBackpressureDrop(s -> createGenericShelf.onDrop(s))
                 .subscribeOn(Schedulers.newThread())
-                .observeOn(Schedulers.newThread(), false, 20)
+                .observeOn(Schedulers.newThread(), false, Main.BUFFER_SIZE_GENERIC_SHELF)
                 .map(s -> { System.out.println("Waiting for the courier on generic shelf.."); return Utilities.waitingCourier(s); })
                 .filter(s -> Utilities.byShelfLife(s, 2))
                 .subscribe(createGenericShelf.subscribeGenericShelf());
 
 
 
-        int elementsPerSecond = 5;
-        System.out.println("-----------------Array size: " + list.size());
         for(int i = 1; i <= list.size(); i++){
             System.out.println("i: " + i + ", "+ list.get(i-1).getId());
             kitchen.onNext(list.get(i-1));
-            if(i % elementsPerSecond == 0) {
+            if(i % Main.ELEMENTS_PER_SECOND == 0) {
                Utilities.pause(1);
             }
         }
