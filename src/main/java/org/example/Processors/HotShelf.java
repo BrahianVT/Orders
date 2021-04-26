@@ -18,6 +18,7 @@ public class HotShelf {
     private FlowableProcessor<Order> genericShelf;
     FlowableProcessor<Order> hotShelf;
 
+    // Create PublishProcessor as threadsafe
     public  HotShelf(){
         hotShelf = PublishProcessor.<Order>create().toSerialized();
     }

@@ -17,10 +17,11 @@ public class Utilities {
      * @return Order
      * */
     public static Order waitingCourier(Order o){
-        logger.debug(" waitingCourier ...");
         Random random = new Random();
         try {
+
             int range = random.nextInt(6 - 2 + 1) + 2;
+            logger.debug(" waiting Courier type: " + o.getTemp() + " for " + range  + " seconds");
             Thread.sleep(range  * 1000);
         } catch (InterruptedException e) {
             e.printStackTrace();

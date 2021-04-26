@@ -32,6 +32,9 @@ public class Run {
         FrozenShelf createFrozenShelf = new FrozenShelf();
         GenericShelf createGenericShelf = new GenericShelf();
 
+        // this components are the elements sending elements
+        // each can receive and emit elements
+        // As every element is in a single thread I implemented as thread safe
         Subject<Order> kitchen = createKitchen.getKitchen();
         FlowableProcessor<Order> hotShelf = createHotShelf.getHotShelf();
         FlowableProcessor<Order> coldShelf = createColdShelf.getColdShelf();
@@ -46,25 +49,27 @@ public class Run {
         createColdShelf.setGenericShelf(genericShelf);
         createFrozenShelf.setGenericShelf(genericShelf);
 
+        // Implement the subscribe method so process the next elements filtering by hot temp in a different thread.
         kitchen
-                .subscribeOn(Schedulers.newThread())
                 .observeOn(Schedulers.newThread())
                 .filter(s -> createKitchen.hotTemp(s))
                 .subscribe(createKitchen.subscribeHotTemp());
 
-
+        // Implement the subscribe method so process the next elements filtering by frozen temp in a different thread..
         kitchen
-                .subscribeOn(Schedulers.newThread())
                 .observeOn(Schedulers.newThread())
                 .filter(s -> createKitchen.frozenTemp(s))
                 .subscribe(createKitchen.subscribeFrozenTemp());
 
-         kitchen.subscribeOn(Schedulers.newThread())
-                .observeOn(Schedulers.newThread())
+        // Implement the subscribe method so process the next elements filtering by cold temp in a different thread..
+         kitchen.observeOn(Schedulers.newThread())
                 .filter(s -> createKitchen.coldTemp(s))
                 .subscribe(createKitchen.subscribeColdTemp());
 
 
+        /* Hot shelf that receive the order it Implement the subscribe method to simulate the delivery waiting for the courier
+         also filtering by shelf life, the size for the buffer is the among specify in the input arguments
+         by default 10 when this is full it sends to generic shelf. */
         hotShelf
                 .onBackpressureDrop(s -> createHotShelf.onDrop(s))
                 .subscribeOn(Schedulers.newThread())
@@ -75,6 +80,9 @@ public class Run {
                 .subscribe(createHotShelf.subscribeHotShelf());
 
 
+        /* Cold shelf that receive the order it Implement the subscribe method to simulate the delivery waiting for the courier
+         also filtering by shelf life, the size for the buffer is the among specify in the input arguments
+         by default 10 when this is full it sends to generic shelf. */
         coldShelf
                 .onBackpressureDrop(s -> createColdShelf.onDrop(s))
                 .subscribeOn(Schedulers.newThread())
@@ -83,14 +91,21 @@ public class Run {
                 .filter(s -> Utilities.byShelfLife(s, 1))
                 .subscribe(createColdShelf.subscribeColdShelf());
 
+        /* Frozen shelf that receive the order it Implement the subscribe method to simulate the delivery waiting for the courier
+         also filtering by shelf life, the size for the buffer is the among specify in the input arguments
+         by default 10 when this is full it sends to generic shelf. */
         frozenShelf
                 .onBackpressureDrop(s -> createFrozenShelf.onDrop(s))
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(Schedulers.newThread(), false, Main.BUFFER_SIZE_SHELF)
+                .doOnNext(s -> logger.debug("%$In frozen..2"))
                 .map(s -> { logger.debug("Waiting for the courier on frozen shelf.."); return Utilities.waitingCourier(s); })
                 .filter(s -> Utilities.byShelfLife(s, 1))
                 .subscribe(createFrozenShelf.subscribeFrozenShelf());
 
+        /* Generic shelf that receive the order it Implement the subscribe method to simulate the delivery waiting for the courier
+         also filtering by shelf life, the size for the buffer is the among specify in the input arguments
+         by default 15 when this is full it drops the order */
         genericShelf
                 .onBackpressureDrop(s -> createGenericShelf.onDrop(s))
                 .subscribeOn(Schedulers.newThread())
@@ -100,9 +115,11 @@ public class Run {
                 .subscribe(createGenericShelf.subscribeGenericShelf());
 
 
-
+        /*
+        * Section that simulate elements/requets  per second defined by ELEMENTS_PER_SECOND the first input Argument.
+        * */
         for(int i = 1; i <= list.size(); i++){
-            logger.debug("i: " + i + ", "+ list.get(i-1).getId());
+            logger.debug("i " + i + " "+ list.get(i-1).getId());
             kitchen.onNext(list.get(i-1));
             if(i % Main.ELEMENTS_PER_SECOND == 0) {
                Utilities.pause(1);

@@ -31,7 +31,7 @@ public class ColdShelf {
      * onDrop discard a element from the cold shelf and delivers to the generic shelf
      * */
     public void onDrop(Order o){
-        System.out.println("ColdShelf full, sent to  generic Shelf");
+        logger.debug("ColdShelf full, sent to  generic Shelf");
         genericShelf.onNext(o);
     }
 
@@ -52,7 +52,7 @@ public class ColdShelf {
             @Override
             public void onNext(Order order) {
                 order.finishTime();
-                System.out.println("Cold Order delivered! ");
+                logger.debug("Cold Order delivered! ");
                 subscription.request(1);
             }
 
@@ -63,7 +63,7 @@ public class ColdShelf {
 
             @Override
             public void onComplete() {
-                System.out.println("Delivered all orders C.");
+                logger.debug("Delivered all orders C.");
             }
         };
     }

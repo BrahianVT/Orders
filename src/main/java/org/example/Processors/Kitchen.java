@@ -70,7 +70,7 @@ public  class  Kitchen {
             @Override
             public void onNext(Order order) {
                 order.initTime();
-                System.out.println("Sent to cold shelf " );
+                logger.debug("Sent to cold shelf " );
                 coldShelf.onNext(order);
             }
 
@@ -107,7 +107,7 @@ public  class  Kitchen {
 
             @Override
             public void onComplete() {
-                logger.debug("--- Processed all Cold Temperature Orders");
+                logger.debug("--- Processed all Frozen Temperature Orders");
             }
         };
     }

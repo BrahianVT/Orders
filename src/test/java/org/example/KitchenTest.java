@@ -16,12 +16,15 @@ public class KitchenTest {
     ReadJson read = new ReadJson();
     @BeforeEach
     public void setup(){
-            orders = read.loadJsonFile("src/test/resources/test.json");
+        orders = read.loadJsonFile("src/test/resources/test.json");
         kitchen = new Kitchen();
     }
 
     @Test
     public void testFilterByHotTemp(){
+        System.out.println("***********: " + orders == null);
+        System.out.println("***********: " + orders);
+
         Order[] hotOrders = orders.stream().
                 filter(s -> s.getTemp().equals("hot")).toArray(Order[]::new);
 
