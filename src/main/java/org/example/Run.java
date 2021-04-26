@@ -117,6 +117,8 @@ public class Run {
 
         /*
         * Section that simulate elements/requets  per second defined by ELEMENTS_PER_SECOND the first input Argument.
+        *
+        * Total threads   8 threads
         * */
         for(int i = 1; i <= list.size(); i++){
             logger.debug("i " + i + " "+ list.get(i-1).getId());
