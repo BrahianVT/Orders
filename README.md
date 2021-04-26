@@ -54,10 +54,10 @@ I am using the library called RX-JAVA to help me to implement this pattern using
 ## Concurrency Model  
 Functional programming is the process of building software by composing pure functions, avoiding shared state, mutable data, and side-effects  
 with this components we can avoid another problems when we are using blocking programming and share state in concurrency such data race or race contitions.  
-Also I decided to use it because althogth I am not an expert in concurrency I know that dealing when share state in concurrency is difficult when we need to scale and trace bugs.  
+Also I decided to use it because although I am not an expert in concurrency I know that dealing with share state in concurrency is difficult when we need to scale and trace bugs.  
 
 
-The key part I analized to user rx-java was that it could help to get the following features out of the box:  
+The key part I analyzed to user rx-java was that it could help to get the following features out of the box:  
 * Responsive: The systems should respond in a timely manner.  
 * Message Driven: Systems should use async message-passing between components to ensure loose coupling.  
 * Elastic: Systems should stay responsive under high load.  
@@ -94,11 +94,16 @@ The project is a maven project so in the root folder where the **pom.xml** execu
 ```
 mvn package
 ```
-This will create the .jar but is a litle by slow because of the tests.
+This will create the .jar but is a little bit slow because of the tests.
+## Execute the project with dependencies
+If you want to create the jar with dependencies to execute from command-line, execute the next command:  
+```
+mvn compile assembly:single
+```
 
-Go to the folder inside **target**  
+Go to the folder inside **target** , the file **orders.json** should be in the same folder, please copy it.  
 
-and in cdm or console execute the following command:   
+and in cmd or console execute the following command:   
 ```
 java -jar "Orders-1".jar 2 10 15
 ```
@@ -106,6 +111,6 @@ The first parameter is  ELEMENTS_PER_SECOND
 The second parameter is  BUFFER_SIZE_SHELF  
 The third parameter is  ELEMENTS_PER_SECOND  
 
-
+These variables already are defined by default with the same value, so you can change it if you want.
 
 
