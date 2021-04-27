@@ -98,7 +98,6 @@ public class Run {
                 .onBackpressureDrop(s -> createFrozenShelf.onDrop(s))
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(Schedulers.newThread(), false, Main.BUFFER_SIZE_SHELF)
-                .doOnNext(s -> logger.debug("%$In frozen..2"))
                 .map(s -> { logger.debug("Waiting for the courier on frozen shelf.."); return Utilities.waitingCourier(s); })
                 .filter(s -> Utilities.byShelfLife(s, 1))
                 .subscribe(createFrozenShelf.subscribeFrozenShelf());
@@ -116,7 +115,7 @@ public class Run {
 
 
         /*
-        * Section that simulate elements/requets  per second defined by ELEMENTS_PER_SECOND the first input Argument.
+        * Section that simulate elements/requests  per second defined by ELEMENTS_PER_SECOND the first input Argument.
         *
         * Total threads   8 threads
         * */
@@ -129,10 +128,8 @@ public class Run {
         }
 
         kitchen.onComplete();
-        boolean a = false;
-        while(!genericShelf.hasComplete()){
-            a = true;
-        }
+        // Block  to finish process the orders
+        genericShelf.isEmpty().blockingGet();
 
     }
 
