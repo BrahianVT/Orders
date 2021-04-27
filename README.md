@@ -10,7 +10,7 @@ Receive the order, dispatch a courier to pick up and deliver that specific order
 The courier should arrive randomly between 2-6 seconds later. The courier should instantly pick up the order upon arrival.The courier should instantly deliver it.  
 
 ## Orders  
-Orders must be parse from the file and ingested into your system 2 ordes per second.  
+Orders must be parse from the file and ingested into your system 2 orders per second.  
 ```
 {
 "id": "0ff534a7-a7c4-48ad-b6ec-7632e36af950",
